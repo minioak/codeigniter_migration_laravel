@@ -16,7 +16,9 @@ class CodeigniterSession extends Model
     public function __construct() 
     {
         $this->table = config('ci_session.sess_table_name');
-        
+        if (config('ci_session.session_database_name') != '') {
+            $this->connection = config('ci_session.session_database_name');
+        }
     }
     
     public function isValid()
